@@ -1,37 +1,55 @@
 let React         = require('react')
-let render        = require('react-dom').render
-let request       = require('superagent')
 let _             = require('lodash')
-let Recipe        = require('./recipe')
+let Recipe        = require('./Recipe')
 let Ingredients   = require('./Ingredients')
 let AddRecipe     = require('./AddRecipe')
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
 // not exactly pretty, but it'll have to do.
 // i'm not even kidding, man.
 let Main = React.createClass({
   render : function() {
-    console.log(this)
-    let createdRows = ""
-    if (this.state.items) {
-      createdRows = _.map(this.state.items, function(item) {
+    let createdCells = ""
+    if (this.props.items) {
+      createdCells = _.map(this.props.items, function(item) {
         return (
-          <tr key={item.RecipeName}>
-            <td>{item.RecipeName}</td>
-            <td><Link to={{ pathname : '/recipe', state : item }}>boop.</Link></td>
-            <td><Link to={{ pathname : '/instructions', state : item }}>boop.</Link></td>
-          </tr>
+          <div className="recipe-display" key={item.RecipeName}>
+            <h3>{item.RecipeName}</h3>
+            <p>
+              <a onClick={this.callback.bind(this, item, 'ingredients')}><i className="fa fa-shopping-cart" aria-hidden="true" /></a>
+              <a onClick={this.callback.bind(this, item, 'recipe')}><i className="fa fa-list-ol" aria-hidden="true" /></a>
+            </p>
+            <img src={item.Image} />
+          </div>
         )
-      })
+      }.bind(this))
     }
+    let headerTitle = "it's not like i wanted you to make food or anything, b-baka!"
+    let headerSubtitle = "recipe assistance, ingredients lists, and directions for the internet age."
     return (
-        <div className="wrapper">
-          <Link to="/addrecipe">+</Link>
-          <table>
-            <tbody>
-              {createdRows}
-            </tbody>
-          </table>
+        <div className="main">
+          <div className="screen">
+            <div className="header">
+              <h1 className="title">{headerTitle}</h1>
+              <h3 className="subtitle">{headerSubtitle}</h3>
+            </div>
+            <a href="#recipetable"><i className="fa fa-angle-down" aria-hidden="true" /></a>
+          </div>
+
+          <a name="recipetable" />
+          <div className="wrapper">
+            <div className="icons">
+              <i className="fa fa-search" aria-hidden="true" />
+              <i className="fa fa-cog" aria-hidden="true" />
+            </div>
+            <div className="recipe-table">
+              {createdCells}
+              <div className="recipe-display">
+                <a onClick={this.callback.bind(this, null, 'addRecipe')}>
+                  <div className="add-icon">+</div>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       )
   },
@@ -40,23 +58,9 @@ let Main = React.createClass({
       items : null
     }
   },
-  componentDidMount : function() {
-    request
-      .get('https://mqov0cihdi.execute-api.us-east-1.amazonaws.com/prod/RecipeUpdate?TableName=Recipes')
-      .end(function(err, res) {
-        if (res.body) {
-          this.setState({ items : res.body.Items })
-        }
-      }.bind(this))
+  callback : function(arg1, arg2) {
+    this.props.callback(arg1, arg2)
   }
 })
 
-render(
-  <Router>
-    <div>
-      <Route exact path="/" component={Main} />
-      <Route path="/recipe" component={Recipe} />
-      <Route path="/instructions" component={Ingredients} />
-      <Route path="/addrecipe" component={AddRecipe} />
-    </div>
-  </Router>, document.getElementById('react'))
+module.exports = Main

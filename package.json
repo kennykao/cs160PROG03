@@ -5,13 +5,15 @@
   "main": "index.js",
   "scripts": {
     "webpack-watch": "webpack-dev-server --content-base display/ --inline --hot",
-    "dev": "concurrent --kill-others \"npm run webpack-watch\""
+    "sass-watch": "sass --watch display/sassy.scss:display/styles.css",
+    "dev": "concurrent --kill-others \"npm run webpack-watch\" \"npm run sass-watch\""
   },
   "dependencies": {
     "babel-core": "^6.16.0",
     "babel-loader": "^6.2.4",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.11.1",
+    "jquery": "^3.1.1",
     "lodash": "^4.14.1",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",

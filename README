@@ -1,0 +1,3 @@
+run by opening index.html in browser of choice.
+
+if you'd rather run it off a server, use npm run webpack-watch or just roll your own express server.
