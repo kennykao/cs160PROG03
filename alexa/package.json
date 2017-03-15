@@ -1,0 +1,18 @@
+{
+  "name": "wendys-recipes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "alexa-app": "^3.2.0",
+    "alexa-app-server": "^3.0.1",
+    "request": "^2.81.0",
+    "request-promise": "^4.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
