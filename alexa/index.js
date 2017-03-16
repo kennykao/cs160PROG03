@@ -274,7 +274,7 @@ app.intent(Intent.select,
         }
 
         // Process the recipe request.
-        const name = request.slot("name");
+        const name = request.slot("name").toLowerCase();
         const recipe = recipes[name];
 
         if (!recipe)
