@@ -1,0 +1,3 @@
+#!/bin/bash
+
+zip -FSrq skill.zip . -x *zip*
