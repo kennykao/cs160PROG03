@@ -1,0 +1,41 @@
+{
+  "intents": [
+    {
+      "intent": "HelpIntent"
+    },
+    {
+      "intent": "SelectIntent",
+      "slots": [
+        {
+          "name": "name",
+          "type": "AMAZON.Food"
+        }
+      ]
+    },
+    {
+      "intent": "IngredientsIntent"
+    },
+    {
+      "intent": "FlowIntent",
+      "slots": [
+        {
+          "name": "flow",
+          "type": "FlowType"
+        },
+        {
+          "name": "unit",
+          "type": "RecipeUnit"
+        }
+      ]
+    },
+    {
+      "intent": "StartOverIntent"
+    },
+    {
+      "intent": "ReturnIntent"
+    },
+    {
+      "intent": "ExitIntent"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+HelpIntent what can I say
+HelpIntent what commands can I say
+HelpIntent help
+HelpIntent help me
+SelectIntent {name}
+SelectIntent {name} recipe
+SelectIntent recipe for {name}
+SelectIntent find {name}
+SelectIntent find the recipe for {name}
+SelectIntent let's make {name}
+SelectIntent I'd like to make {name}
+SelectIntent I would like to make {name}
+IngredientsIntent list ingredients
+IngredientsIntent read ingredients
+IngredientsIntent list the ingredients
+IngredientsIntent read the ingredients
+IngredientsIntent give me the ingredients
+IngredientsIntent tell me the ingredients
+IngredientsIntent what are the ingredients
+FlowIntent {flow}
+FlowIntent {flow} {unit}
+StartOverIntent start again
+StartOverIntent restart
+ReturnIntent go back to main menu
+ReturnIntent return to main menu
+ReturnIntent go back to the main menu
+ReturnIntent return to the main menu
+ExitIntent exit
+ExitIntent quit
+ExitIntent cancel
+ExitIntent go back
